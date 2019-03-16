@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/molhamalnasr/forkify/issues"
   },
-  "homepage": "https://github.com/molhamalnasr/forkify#readme"
+  "homepage": "https://github.com/molhamalnasr/forkify#readme",
+  "devDependencies": {
+    "webpack": "^4.29.6"
+  }
 }
