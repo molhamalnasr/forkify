@@ -2,3 +2,4 @@
 dist/.DS_Store
 dist/img/.DS_Store
 src/.DS_Store
+node_modules/
