@@ -25,6 +25,7 @@ const searchController = async () => {
         
         // 3) Prepare the UI to show the result
         searchView.clearInput();
+        searchView.clearResult();
         
         // 4) Search for recipes
         await state.search.getRecipe();
