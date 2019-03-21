@@ -1,6 +1,7 @@
 // Global app controller
 
 import Search from './modules/Search';
+import Recipe from './modules/Recipe';
 import {
      elements,
     renderLoader,
@@ -16,6 +17,10 @@ import * as searchView from './views/searchView';
 */
 
 const state = {};
+
+/** 
+* Search Controller
+*/
 
 const searchController = async () => {
     
@@ -56,3 +61,62 @@ elements.searchRes.addEventListener('click', el => {
         searchView.renderResult(state.search.result, gotoPage);
     }
 });
+
+/** 
+* Search Controller
+*/
+
+const controlRecipe = async () => {
+    
+    const id = window.location.hash.replace('#', '');
+    
+    if (id) {
+        // Prepare UI for the changes
+        
+        // Creat new Recipe object
+        state.recipe = new Recipe(id);
+        
+        // get the Recipe data and Parse the ingredients
+        await state.recipe.getRecipe();
+        state.recipe.parseIngredients();
+        
+        // Calculate servings and time
+        state.recipe.calcTime();
+        state.recipe.calcServings();
+        
+        // Render recipe
+        console.log(state.recipe);
+    }
+    
+};
+
+['hashchange', 'load'].forEach((event) => window.addEventListener(event, controlRecipe));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
