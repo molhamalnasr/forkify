@@ -8,6 +8,7 @@ import {
     clearLoader
 } from './views/base';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 
 /** Global state of the App
 * - Search opject
@@ -63,7 +64,7 @@ elements.searchRes.addEventListener('click', el => {
 });
 
 /** 
-* Search Controller
+* Recipe Controller
 */
 
 const controlRecipe = async () => {
@@ -72,6 +73,8 @@ const controlRecipe = async () => {
     
     if (id) {
         // Prepare UI for the changes
+        recipeView.clearRecipe();
+        renderLoader(elements.recipe);
         
         // Creat new Recipe object
         state.recipe = new Recipe(id);
@@ -85,7 +88,8 @@ const controlRecipe = async () => {
         state.recipe.calcServings();
         
         // Render recipe
-        console.log(state.recipe);
+        clearLoader();
+        recipeView.renderRecipe(state.recipe);
     }
     
 };
