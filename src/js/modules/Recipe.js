@@ -37,6 +37,8 @@ export default class Recipe {
         
         const unitsLong = ['tablespoons', 'tablespoon', 'ounces', 'ounce', 'teaspoons', 'teaspoon', 'cups', 'pounds'];
         const unitsShort = ['tbsp', 'tbsp', 'oz', 'oz', 'tsp', 'tsp', 'cup', 'pound'];
+        const units = [...unitsShort, 'kg', 'g']
+        
         const newIngredients = this.ingredients.map(el => {
             
             // 1) uniform the units
@@ -50,18 +52,23 @@ export default class Recipe {
             
             // 3) Parse ingredients into count, unit and ingredient
             const arrIng = ingredient.split(' ');
-            const unitIndex = arrIng.findIndex(el2 => unitsShort.includes(el2));
+            const unitIndex = arrIng.findIndex(el2 => units.includes(el2));
             
             let objIng;
             if (unitIndex > -1) {
                 // There is a unit
-                const arrCount = arrIng.slice(0, unitIndex);
+                let arrCount = arrIng.slice(0, unitIndex);
                 let count;
                 if (arrCount.length === 1){
                     count = eval(arrIng[0].replace('-', '+'));
                 } else {
                     //TODO eval(arrIng.slice(0, unitIndex).join('+'));
-                    count = eval(arrCount.join('+'));
+                    if (isNaN(arrCount[1]) && arrCount.length > 2) {
+                        arrCount.splice(1,1);
+                        count = Math.abs(eval(arrCount.join('-')));
+                    } else {
+                        count = eval(arrCount.join('+'));
+                    }
                 }
                 
                 objIng = {
