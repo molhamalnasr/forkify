@@ -56,6 +56,8 @@ const renderRecipe = recipe => {
 };
 
 const creatButtons = (page, type) => {
+    //TODO check if there is no pagination 
+    // If the result count less than 10 results.
     return `
         <button class="btn-inline results__btn--${type}" data-goto="${type === 'prev' ? page - 1 : page + 1}">
             <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
