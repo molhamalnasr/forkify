@@ -2,6 +2,7 @@
 
 import Search from './modules/Search';
 import Recipe from './modules/Recipe';
+import List from './modules/List';
 import {
      elements,
     renderLoader,
