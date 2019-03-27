@@ -21,6 +21,8 @@ import * as listView from './views/listView';
 
 const state = {};
 
+//TODO Focus on search Btn when page is loaded
+
 /** 
 * Search Controller
 */
@@ -117,6 +119,29 @@ const controlList = () => {
     });
     
 };
+
+elements.shoppingList.addEventListener('click', e => {
+    
+    // Get element Id
+    const id = e.target.closest('.shopping__item').dataset.itemid;
+    
+    if (e.target.matches('.shopping__delete, .shopping__delete *') && id) {
+        
+        // Delete item from state
+        state.list.deleteItem(id);
+        
+        // Delete item from UI
+        listView.deleteItem(id);
+        
+    } else if (e.target.matches('.shopping__item-value') && id) {
+        
+        // Update the count in the state object
+        const val = parseFloat(e.target.value);
+        state.list.updateCount(id, val);
+        
+    }
+    
+});
 
 // Handling recipe Button clicks
 elements.recipe.addEventListener('click', e => {
