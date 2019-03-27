@@ -10,6 +10,7 @@ import {
 } from './views/base';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
+import * as listView from './views/listView';
 
 /** Global state of the App
 * - Search opject
@@ -100,6 +101,23 @@ const controlRecipe = async () => {
 
 ['hashchange', 'load'].forEach((event) => window.addEventListener(event, controlRecipe));
 
+/** 
+* List Controller
+*/
+
+const controlList = () => {
+    
+    // Creat new list if there is no list
+    if (!state.list) state.list = new List();
+    
+    // Add ingredients to the list and UI
+    state.recipe.ingredients.forEach(el => {
+        const item = state.list.addItem(el.count, el.unit, el.ingredient);
+        listView.renderItem(item);
+    });
+    
+};
+
 // Handling recipe Button clicks
 elements.recipe.addEventListener('click', e => {
     
@@ -113,6 +131,9 @@ elements.recipe.addEventListener('click', e => {
         // Increase the servings
         state.recipe.updateServings('inc');
         recipeView.updateServingsIngredients(state.recipe);
+    } else if (e.target.matches('.recipe__btn-add, .recipe__btn-add *')) {
+        // Add ingredients to shopping list
+        controlList();
     }
     
 });
