@@ -3,6 +3,7 @@
 import Search from './modules/Search';
 import Recipe from './modules/Recipe';
 import List from './modules/List';
+import Likes from './modules/Likes';
 import {
      elements,
     renderLoader,
@@ -143,6 +144,37 @@ elements.shoppingList.addEventListener('click', e => {
     
 });
 
+/** 
+* List Controller
+*/
+
+const controlLikes = () => {
+    
+    if (!state.likes) state.likes = new Likes;
+    const currentId = state.recipe.id;
+    
+    if (!state.likes.isLiked(currentId)) {
+        
+        // Add Liked recipe to the state
+        const newLike = state.likes.addLike(currentId, state.recipe.title, state.recipe.author, state.recipe.img);
+        
+        // Toggel the Like Button
+        
+        // ADD Liked recipe to the UI
+        
+    } else {
+        
+        // Remove Liked recipe from the state
+        state.likes.deleteLike(currentId);
+        
+        // Toggel the Like Button
+        
+        // Remove Liked recipe from the UI
+        
+    }
+    
+};
+
 // Handling recipe Button clicks
 elements.recipe.addEventListener('click', e => {
     
@@ -159,6 +191,9 @@ elements.recipe.addEventListener('click', e => {
     } else if (e.target.matches('.recipe__btn-add, .recipe__btn-add *')) {
         // Add ingredients to shopping list
         controlList();
+    } else if (e.target.matches('.recipe__love, .recipe__love *')) {
+        // Controll Likes
+        controlLikes();
     }
     
 });
