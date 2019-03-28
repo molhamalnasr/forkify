@@ -18,7 +18,7 @@ export const heightlightSelected = id => {
         el.classList.remove('results__link--active');
     });
     
-    if (id) document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+    if (id) document.querySelector(`.results__link[href="#${id}"]`).classList.add('results__link--active');
     
 };
 
