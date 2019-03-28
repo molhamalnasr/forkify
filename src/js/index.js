@@ -12,6 +12,7 @@ import {
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likesView from './views/likesView';
 
 /** Global state of the App
 * - Search opject
@@ -97,7 +98,7 @@ const controlRecipe = async () => {
         
         // Render recipe
         clearLoader();
-        recipeView.renderRecipe(state.recipe);
+        recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     }
     
 };
@@ -145,8 +146,13 @@ elements.shoppingList.addEventListener('click', e => {
 });
 
 /** 
-* List Controller
+* Likes Controller
 */
+
+// TODO remove the next line of code 
+// Testing likes
+state.likes = new Likes;
+likesView.toggleLikeMenu(state.likes.getNumLikes());
 
 const controlLikes = () => {
     
@@ -159,8 +165,10 @@ const controlLikes = () => {
         const newLike = state.likes.addLike(currentId, state.recipe.title, state.recipe.author, state.recipe.img);
         
         // Toggel the Like Button
+        likesView.toggleLikeBtn(true);
         
         // ADD Liked recipe to the UI
+        likesView.renderLike(newLike);
         
     } else {
         
@@ -168,10 +176,13 @@ const controlLikes = () => {
         state.likes.deleteLike(currentId);
         
         // Toggel the Like Button
+        likesView.toggleLikeBtn(false);
         
         // Remove Liked recipe from the UI
+        likesView.deleteLike(currentId);
         
     }
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
     
 };
 

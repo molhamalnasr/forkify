@@ -22,7 +22,7 @@ export const heightlightSelected = id => {
     
 };
 
-const limitRecipeTitle = function (title, limit = 17) {
+export const limitRecipeTitle = function (title, limit = 17) {
     
     if (title.length > limit) {
         const newTitle = [];
