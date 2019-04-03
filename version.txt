@@ -1,4 +1,4 @@
-prev_commit='2a3c85bf6c83a5eabde9b89973950f6012152b4c'
-date='03.04.2019 06:22:54'
-version='b8f3980fef2d147ad1d05e81197c2e9a'
+prev_commit='71306a4e8508960a27bb71dedc6fb821ce4f76a3'
+date='03.04.2019 06:36:12'
+version='58b44255edc36b7f728a310f67e0b6d3'
 
