@@ -12,12 +12,19 @@ export default class Likes {
             img
         };
         this.likes.push(like);
+        
+        // Persist Data in localStorage
+        this.persistDate();
+        
         return like;
     }
     
     deleteLike (id) {
         const index = this.likes.findIndex(el => el.id === id);
         this.likes.splice(index, 1);
+        
+        // Delete Data in localStorage
+        this.persistDate();
     }
     
     isLiked (id) {
@@ -26,6 +33,17 @@ export default class Likes {
     
     getNumLikes () {
         return this.likes.length;
+    }
+    
+    persistDate () {
+        localStorage.setItem('Liks', JSON.stringify(this.likes));
+    }
+    
+    readStorage () {
+        const storage = JSON.parse(localStorage.getItem('Liks'));
+        
+        // Restoring likes from localStorage
+        if (storage) this.likes = storage;
     }
     
 }
