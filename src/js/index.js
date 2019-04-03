@@ -23,7 +23,10 @@ import * as likesView from './views/likesView';
 
 const state = {};
 
-//TODO Focus on search Btn when page is loaded
+// Add focus on search field when page is loaded
+window.addEventListener('load', () => {
+    elements.searchInput.focus();
+});
 
 /** 
 * Search Controller
