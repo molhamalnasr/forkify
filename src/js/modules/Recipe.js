@@ -62,7 +62,6 @@ export default class Recipe {
                 if (arrCount.length === 1){
                     count = eval(arrIng[0].replace('-', '+'));
                 } else {
-                    //TODO eval(arrIng.slice(0, unitIndex).join('+'));
                     if (isNaN(arrCount[1]) && arrCount.length > 2) {
                         arrCount.splice(1,1);
                         count = Math.abs(eval(arrCount.join('-')));

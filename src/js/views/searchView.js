@@ -73,13 +73,13 @@ const renderButtons = (page, numRes, resPerPage) => {
     let button;
     
     if (page === 1 && pages > 1) {
-        //TODO show only the next page Button
+        // show only the next page Button
         button = `${creatButtons(page, 'next')}`;
     } else if (page < pages) {
-        //TODO show both Buttons
+        // show both Buttons
         button = `${creatButtons(page, 'prev')} ${creatButtons(page, 'next')}`;
     } else if (page === pages && pages > 1) {
-        //TODO show only the prve page Button
+        // show only the prve page Button
         button = `${creatButtons(page, 'prev')}`;
     }
     
