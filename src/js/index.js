@@ -220,27 +220,8 @@ elements.recipe.addEventListener('click', e => {
     
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// TODO implement BTN to delete all shopping list items
+// TODO Implement functionality to manually add items to shopping list
+// TODO save shopping list data in localStorage
+// TODO improve error handling
+// TODO replace localStorage with SQL Database
